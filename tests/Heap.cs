@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using DotNetEnv;
+using NUnit.Framework.Legacy;
+
 
 namespace SmartBulkCopy.Tests
 {
@@ -16,12 +18,12 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.heap");
 
-            Assert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
-            Assert.IsInstanceOf(typeof(NoPartitionsCopyInfo), tar.CopyInfo[0]);
-            Assert.AreEqual(1, tar.CopyInfo.Count);
-            Assert.AreEqual(OrderHintType.None, tar.CopyInfo[0].OrderHintType);
-            Assert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
-            Assert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
+            ClassicAssert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
+            ClassicAssert.IsInstanceOf(typeof(NoPartitionsCopyInfo), tar.CopyInfo[0]);
+            ClassicAssert.AreEqual(1, tar.CopyInfo.Count);
+            ClassicAssert.AreEqual(OrderHintType.None, tar.CopyInfo[0].OrderHintType);
+            ClassicAssert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
+            ClassicAssert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
         }
 
         [Test]
@@ -29,12 +31,12 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("dbo.LINEITEM_HEAP");
 
-            Assert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
-            Assert.IsInstanceOf(typeof(LogicalPartitionCopyInfo), tar.CopyInfo[0]);
-            Assert.AreEqual(9, tar.CopyInfo.Count);
-            Assert.AreEqual(OrderHintType.None, tar.CopyInfo[0].OrderHintType);
-            Assert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
-            Assert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
+            ClassicAssert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
+            ClassicAssert.IsInstanceOf(typeof(LogicalPartitionCopyInfo), tar.CopyInfo[0]);
+            ClassicAssert.AreEqual(9, tar.CopyInfo.Count);
+            ClassicAssert.AreEqual(OrderHintType.None, tar.CopyInfo[0].OrderHintType);
+            ClassicAssert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
+            ClassicAssert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
         }
 
         [Test]
@@ -42,12 +44,12 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("dbo.LINEITEM_HEAP_PARTITIONED");
 
-            Assert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
-            Assert.IsInstanceOf(typeof(PhysicalPartitionCopyInfo), tar.CopyInfo[0]);
-            Assert.AreEqual(85, tar.CopyInfo.Count);
-            Assert.AreEqual(OrderHintType.PartionKeyOnly, tar.CopyInfo[0].OrderHintType);
-            Assert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
-            Assert.AreEqual("[L_COMMITDATE]", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
+            ClassicAssert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
+            ClassicAssert.IsInstanceOf(typeof(PhysicalPartitionCopyInfo), tar.CopyInfo[0]);
+            ClassicAssert.AreEqual(85, tar.CopyInfo.Count);
+            ClassicAssert.AreEqual(OrderHintType.PartionKeyOnly, tar.CopyInfo[0].OrderHintType);
+            ClassicAssert.AreEqual("", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetOrderByString());
+            ClassicAssert.AreEqual("[L_COMMITDATE]", tar.CopyInfo[0].SourceTableInfo.PrimaryIndex.GetPartitionByString());
         }
     }
 }

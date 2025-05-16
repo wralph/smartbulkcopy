@@ -1,10 +1,17 @@
 using Microsoft.Data.SqlClient.Server;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Data.SqlTypes;
 using System.IO;
 
 namespace Microsoft.SqlServer.Types
 {
+    public interface IBinarySerialize
+    {
+        void Write(BinaryWriter w);
+        void Read(BinaryReader r);
+    }
+
     public class SerializableBase : IBinarySerialize, INullable
     {
         private MemoryStream _ms;

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using NLog;
 using SmartBulkCopy;
 using System.Collections.Generic;
@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using DotNetEnv;
+using NUnit.Framework.Legacy;
+
 
 namespace SmartBulkCopy.Tests
 {

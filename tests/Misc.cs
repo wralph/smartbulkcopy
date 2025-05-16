@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using DotNetEnv;
+using NUnit.Framework.Legacy;
+
 
 namespace SmartBulkCopy.Tests
 {
@@ -16,7 +18,7 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.table_with_fk");
 
-            Assert.AreEqual(AnalysisOutcome.ForeignKeysFoundOnDestination, tar.Outcome);
+            ClassicAssert.AreEqual(AnalysisOutcome.ForeignKeysFoundOnDestination, tar.Outcome);
         }
 
         [Test]
@@ -24,7 +26,7 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.mix");
 
-            Assert.AreEqual(AnalysisOutcome.SecondaryIndexFoundOnDestination, tar.Outcome);
+            ClassicAssert.AreEqual(AnalysisOutcome.SecondaryIndexFoundOnDestination, tar.Outcome);
         }
 
         [Test]
@@ -32,7 +34,7 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.temporal");
 
-            Assert.AreEqual(AnalysisOutcome.DestinationIsTemporalTable, tar.Outcome);
+            ClassicAssert.AreEqual(AnalysisOutcome.DestinationIsTemporalTable, tar.Outcome);
         }    
 
         [Test]
@@ -40,7 +42,7 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.hierarchical_data");
 
-            Assert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
+            ClassicAssert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
         }    
 
         [Test]
@@ -48,7 +50,7 @@ namespace SmartBulkCopy.Tests
         {
             var tar = await AnalyzeTable("schema1.spatial_data");
 
-            Assert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
+            ClassicAssert.AreEqual(AnalysisOutcome.Success, tar.Outcome);
         }    
     }
 }
