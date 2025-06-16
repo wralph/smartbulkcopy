@@ -3,6 +3,27 @@ using System;
 using System.Data.SqlTypes;
 using System.IO;
 
+// Define the SqlMethodAttribute as it's not available in .NET 8
+namespace Microsoft.Data.SqlClient.Server
+{
+    [AttributeUsage(AttributeTargets.Method)]
+    public sealed class SqlMethodAttribute : Attribute
+    {
+        public bool IsDeterministic { get; set; }
+        public bool IsPrecise { get; set; }
+    }
+}
+
+// Define the IBinarySerialize interface as it's no longer available in .NET 8
+namespace Microsoft.SqlServer.Types
+{
+    public interface IBinarySerialize
+    {
+        void Write(BinaryWriter w);
+        void Read(BinaryReader r);
+    }
+}
+
 namespace Microsoft.SqlServer.Types
 {
     public class SerializableBase : IBinarySerialize, INullable
