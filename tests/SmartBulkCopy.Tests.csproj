@@ -1,34 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Title>SmartBulkCopy.Tests</Title>    
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <IsPackable>false</IsPackable>
+    <AssemblyVersion>1.9.9</AssemblyVersion>
     <Authors>Davide Mauri</Authors>
-    <Product>Smart Bulk Copy</Product>
-    <Description>Efficently copy database tables from one SQL Server/Azure SQL database to another</Description>
     <Copyright>Davide Mauri</Copyright>
+    <Description>Efficently copy database tables from one SQL Server/Azure SQL database to another</Description>
+    <FileVersion>1.9.9</FileVersion>
+    <IsPackable>false</IsPackable>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/yorek/smartbulkcopy</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/yorek/smartbulkcopy</RepositoryUrl>
+    <Product>Smart Bulk Copy</Product>
     <RepositoryType>GIT</RepositoryType>
+    <RepositoryUrl>https://github.com/yorek/smartbulkcopy</RepositoryUrl>
+    <TargetFramework>net8.0</TargetFramework>
+    <Title>SmartBulkCopy.Tests</Title>
     <Version>1.9.9</Version>
-    <AssemblyVersion>1.9.9</AssemblyVersion>
-    <FileVersion>1.9.9</FileVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DotNetEnv" Version="1.4.0" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.6.5" />
-    <PackageReference Include="nunit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\client\SmartBulkCopy.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="*.config.test.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -43,5 +33,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="*" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.3.14" />
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+    <PackageReference Include="nunit" Version="4.3.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+  </ItemGroup>
 </Project>
