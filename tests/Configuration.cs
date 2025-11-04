@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using NLog;
 using SmartBulkCopy;
 using System.Collections.Generic;
@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using DotNetEnv;
+using NUnit.Framework.Legacy;
+
 
 namespace SmartBulkCopy.Tests
 {
@@ -27,25 +29,25 @@ namespace SmartBulkCopy.Tests
         [Test]
         public void CommandTimeOut()
         {
-            Assert.AreEqual(_config.CommandTimeOut, 90 * 60);
+            ClassicAssert.AreEqual(_config.CommandTimeOut, 90 * 60);
         }
 
         [Test]
         public void StopIfSecondaryIndex()
         {
-            Assert.IsTrue(_config.StopIf.HasFlag(StopIf.SecondaryIndex));
+            ClassicAssert.IsTrue(_config.StopIf.HasFlag(StopIf.SecondaryIndex));
         }
 
         [Test]
         public void DontStopIfTemporalTable()
         {
-           Assert.IsFalse(_config.StopIf.HasFlag(StopIf.TemporalTable));
+           ClassicAssert.IsFalse(_config.StopIf.HasFlag(StopIf.TemporalTable));
         }
 
         [Test]
         public void CompatibilityMode()
         {
-            Assert.IsTrue(_config.UseCompatibilityMode);            
+            ClassicAssert.IsTrue(_config.UseCompatibilityMode);
         }
     }
 }
